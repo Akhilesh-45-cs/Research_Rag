@@ -1,6 +1,6 @@
 import os
 import chromadb
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitter import RecursiveCharacterTextSplitter
 from src.extraction.extractor import extract_text_from_pdf, extract_tables_from_pdf
 from src.chunking.chunker import split_into_sections
 from src.embeddings.embedding_model import get_embedding_model
