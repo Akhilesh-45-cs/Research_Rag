@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Research Assistant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/style.css?v=3">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+</head>
+<body>
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h1>Reading Room</h1>
+            <div class="tagline">AI Research Assistant</div>
+        </div>
+
+        <div class="sidebar-tabs">
+            <button class="sidebar-tab active" data-tab="chats">Chats</button>
+            <button class="sidebar-tab" data-tab="sessions">Sessions</button>
+            <button class="sidebar-tab" data-tab="add">Add Papers</button>
+        </div>
+
+        <div class="sidebar-content">
+
+            <!-- CHATS PANEL -->
+            <div class="sidebar-panel active" id="panel-chats">
+                <button class="btn-primary" id="new-chat-btn">+ New Chat</button>
+                <div id="chat-list"></div>
+            </div>
+
+            <!-- SESSIONS PANEL -->
+            <div class="sidebar-panel" id="panel-sessions">
+                <div id="session-list"></div>
+            </div>
+
+            <!-- ADD PAPERS PANEL -->
+            <div class="sidebar-panel" id="panel-add">
+                <h3 style="font-family: var(--font-display); font-size: 0.9rem; margin-bottom: 10px; color: var(--paper);">Upload PDF</h3>
+                <input type="file" id="upload-file" accept=".pdf" style="display: none;">
+                <div class="file-drop" id="file-drop-zone">
+                    <div class="file-drop-icon">✎</div>
+                    <div class="file-drop-text" id="file-drop-label">Select a PDF to catalog</div>
+                </div>
+                <input type="text" id="upload-topic" placeholder="Topic / session name" style="width: 100%; padding: 8px; margin-bottom: 8px; background: var(--panel-light); border: 1px solid var(--border); color: var(--text); border-radius: 4px; font-size: 0.8rem;">
+                <button class="btn-primary" id="upload-btn">Upload & Process</button>
+                <div id="upload-status" style="font-family: var(--font-mono); font-size: 0.7rem; margin-top: 8px; color: var(--text-muted);"></div>
+
+                <hr style="border-color: var(--border); margin: 20px 0;">
+
+                <h3 style="font-family: var(--font-display); font-size: 0.9rem; margin-bottom: 10px; color: var(--paper);">Fetch by Topic</h3>
+                <input type="text" id="fetch-topic" placeholder="e.g. EV battery thermal management" style="width: 100%; padding: 8px; margin-bottom: 8px; background: var(--panel-light); border: 1px solid var(--border); color: var(--text); border-radius: 4px; font-size: 0.8rem;">
+                <select id="fetch-source" style="width: 100%; padding: 8px; margin-bottom: 8px; background: var(--panel-light); border: 1px solid var(--border); color: var(--text); border-radius: 4px; font-size: 0.8rem;">
+                    <option value="arxiv">arXiv</option>
+                    <option value="core">CORE</option>
+                    <option value="both">Both</option>
+                </select>
+                <input type="number" id="fetch-count" value="3" min="1" max="5" style="width: 100%; padding: 8px; margin-bottom: 8px; background: var(--panel-light); border: 1px solid var(--border); color: var(--text); border-radius: 4px; font-size: 0.8rem;">
+                <button class="btn-primary" id="fetch-btn">Search & Add</button>
+                <div id="fetch-status" style="font-family: var(--font-mono); font-size: 0.7rem; margin-top: 8px; color: var(--text-muted);"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MAIN CHAT AREA -->
+    <div class="main">
+        <div class="chat-window" id="chat-window">
+            <div class="empty-state">Select or start a chat to begin.</div>
+        </div>
+        <div class="input-area">
+            <input type="text" id="message-input" placeholder="Ask a question about your papers...">
+            <button id="send-btn">Send</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="confirm-modal">
+    <div class="modal-box">
+        <div class="modal-title" id="modal-title">Confirm</div>
+        <div class="modal-message" id="modal-message"></div>
+        <div class="modal-actions">
+            <button class="modal-btn modal-cancel" id="modal-cancel">Cancel</button>
+            <button class="modal-btn modal-confirm" id="modal-confirm">Delete</button>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<script src="/static/js/app.js?v=3"></script>
+</body>
+</html>
