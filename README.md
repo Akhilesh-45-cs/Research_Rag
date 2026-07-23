@@ -125,13 +125,13 @@ Paper names extracted by the router are **fuzzy-matched** against the real libra
 
 ## 📸 Interface Preview
 
-## 📸 Interface Preview
+
 
 **🔗 Live Demo:** [https://research-rag-mhbe.onrender.com](https://research-rag-mhbe.onrender.com)
 
 > Hosted on Render's free tier — the service may take 30–60 seconds to wake up on first load if it's been idle. The demo comes pre-loaded with sample papers, so try asking questions directly rather than uploading new PDFs (uploads are slow on free-tier CPU due to embedding + figure captioning).
-
 The frontend uses a custom "Reading Room" design system — dark ink backgrounds, aged-paper message cards, footnote-style citations, and index-card-styled paper entries with origin tabs (arXiv / CORE / manual upload) — built to feel like a scholar's card catalog rather than a generic chat template.
+
 ---
 
 ## ⚙️ Setup
