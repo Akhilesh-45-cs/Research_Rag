@@ -1,0 +1,12 @@
+venv/
+.env
+data/vector_db/
+data/cache/
+data/documents/
+data/uploads/
+data/reports/
+data/chats/
+data/library_registry.json
+data/sessions.json
+__pycache__/
+*.pyc
