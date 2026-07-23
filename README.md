@@ -23,60 +23,8 @@ The assistant enables researchers to:
 
 The system follows a full extraction → retrieval → generation pipeline, wrapped in an agentic decision layer:
 
-```
-PDF (upload or auto-fetched via arXiv / CORE)
-        │
-        ▼
-┌───────────────────────────────────────────┐
-│  Extraction                                │
-│  • Text (PyMuPDF)                          │
-│  • Tables (pdfplumber)                     │
-│  • Figures → captioned by a vision LLM     │
-└───────────────────────────────────────────┘
-        │
-        ▼
-┌───────────────────────────────────────────┐
-│  Section-aware chunking                    │
-│  (Abstract / Methods / Results / etc.)     │
-└───────────────────────────────────────────┘
-        │
-        ▼
-┌───────────────────────────────────────────┐
-│  Embeddings (local, free) + ChromaDB       │
-└───────────────────────────────────────────┘
-        │
-        ▼
-┌───────────────────────────────────────────┐
-│  Query comes in                            │
-│         │                                  │
-│         ▼                                  │
-│  LLM Router (decides intent)               │
-│  greeting / single-paper / comparison /    │
-│  library question / recent papers /        │
-│  general (→ research agent)                │
-│         │                                  │
-│         ▼                                  │
-│  Hybrid Retrieval (vector + BM25)          │
-│  + Cross-Encoder Reranking                 │
-│         │                                  │
-│         ▼                                  │
-│  LLM generates grounded answer             │
-└───────────────────────────────────────────┘
+<img width="1745" height="1241" alt="architecture" src="https://github.com/user-attachments/assets/2b112963-a6e0-4d93-9322-e3d1cb300b96" />
 
-Papers are grouped into Research Sessions (by topic).
-A session can generate a Report: per-paper summarize
-→ synthesize → export as PDF.
-
-Autonomous Research Agent: for open-ended "general"
-questions, checks whether existing coverage is sufficient;
-if not, searches arXiv, ingests new papers, and re-checks
-before answering - all without manual intervention.
-
-FastAPI backend serves a custom HTML/CSS/JS frontend
-("Reading Room" theme) - chat, sessions, upload, discovery.
-```
-
----
 
 ## ✨ Core Features
 
